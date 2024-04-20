@@ -1,0 +1,48 @@
+@startuml Use Case
+
+left to right direction
+actor User as U
+actor "AI model" as AI
+actor Admin as A
+
+
+rectangle App {
+    usecase (Send Images To Analysis) as ST
+    usecase (FillForm) as FF
+    usecase (Login) as L
+    usecase (Register) as R
+    usecase (Select Birds Images) as SBI
+    usecase (Sign Out) as SO
+    usecase (View Analysis Details) as VAD
+    usecase (View Analysis History) as VAH
+    usecase (Add New Birds Images) as ANBI
+
+
+    U -- L : Logs in
+    U -- R : Registers
+    U -- SBI: Selects
+    U -- SO
+    U -- VAD: Views
+    U -- VAH
+
+
+    L ..> FF : <<includes>>
+    R ..> FF : <<includes>>
+
+
+    SBI ..> ST : <<includes>>
+
+
+
+}
+
+AI <-up- ST : Sends Images
+AI -up-> VAD : Sends Analysis Details
+
+'Admin inherits after user
+A -left-> U : inhertis
+
+A --> ANBI
+
+
+@enduml
