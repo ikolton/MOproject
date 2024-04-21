@@ -1,0 +1,33 @@
+@startuml Login Sequence Diagram
+
+autonumber
+
+actor User as U
+participant "LoginController" as LC
+participant UserService as US
+participant Database as DB
+
+U -> LC: HTTP get /login Request
+activate LC
+LC --> U: Login Page
+deactivate LC
+U -> LC: HTTP post /Login Request
+activate LC
+LC -> US: login()
+    activate US
+    US -> US: encodePassword()
+    US -> DB: checkCredentials()
+    activate DB
+    DB --> US: result
+    deactivate DB
+    US --> LC: result
+    deactivate US
+
+alt#gold User doesn't exists/Password incorrect
+    LC --> U: Show Error Message
+else Correct Credentials
+
+    LC --> U: Redirect to /home
+end
+
+@enduml

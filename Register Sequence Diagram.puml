@@ -1,0 +1,41 @@
+@startuml Register Sequence Diagram
+
+autonumber
+
+actor User as U
+participant "RegisterController" as RC
+participant UserService as US
+participant Database as DB
+
+U -> RC: HTTP get /register Request
+activate RC
+RC --> U: Register Page
+deactivate RC
+U -> RC: HTTP post /register Request
+activate RC
+RC -> US: userExists()
+    activate US
+    US -> DB: userExists()
+    activate DB
+    DB --> US: result
+    deactivate DB
+    US --> RC: result
+    deactivate US
+
+alt#gold User already exists
+    RC --> U: Show Error Message
+else User doesn't exist
+    RC -> US: registerUser()
+    activate US
+    US -> US: encodePassword()
+    US -> DB: Add User
+    activate DB
+    DB --> US: Result
+    deactivate DB
+    US --> RC: Registration success
+    deactivate US
+    RC --> U: Redirect to /login
+    deactivate RC
+end
+
+@enduml

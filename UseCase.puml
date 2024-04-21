@@ -4,6 +4,7 @@ left to right direction
 actor User as U
 actor "AI model" as AI
 actor Admin as A
+actor Database as DB
 
 
 rectangle App {
@@ -16,6 +17,8 @@ rectangle App {
     usecase (View Analysis Details) as VAD
     usecase (View Analysis History) as VAH
     usecase (Add New Birds Images) as ANBI
+    usecase (Load Previous Analysis) as LPA
+    usecase (Save Analysis) as SA
 
 
     U -- L : Logs in
@@ -32,17 +35,23 @@ rectangle App {
 
     SBI ..> ST : <<includes>>
 
+    VAH ..> LPA : <<includes>>
+
+    VAD ..> SA : <<includes>>
 
 
 }
 
 AI <-up- ST : Sends Images
-AI -up-> VAD : Sends Analysis Details
+AI --> VAD : Sends Analysis Details
 
 'Admin inherits after user
 A -left-> U : inhertis
 
 A --> ANBI
+
+DB -up-> LPA : Loads Analyses
+DB <-left- SA : Saves Analysis
 
 
 @enduml
