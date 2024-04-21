@@ -1,0 +1,41 @@
+@startuml Select Birds Sequence Diagram
+
+autonumber
+
+actor User as U
+participant ImageController as IC
+participant "AI Model" as AI
+participant FeedbackService as FS
+database Database as DB
+
+U -> IC: HTTP get /picture-selection
+activate IC
+IC -> IC : getImages()
+IC --> U : Picture Selection Page
+deactivate IC
+
+U -> IC: Selected X images
+activate IC
+loop X times
+
+    IC -> AI: predict(image)
+    activate AI
+    AI -> AI: predict()
+    AI --> IC: prediction
+    deactivate AI
+    IC --> U: Rate Prediction Page
+    deactivate IC
+    U -> IC: Prediction Rating
+    activate IC
+    IC -> FS: saveRating()
+    activate FS
+    FS -> DB: saveRating()
+    activate DB
+    DB --> FS: saved
+    deactivate DB
+    FS --> IC: saved
+end
+
+    IC --> U: Picture Selection Page
+
+@enduml

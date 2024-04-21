@@ -1,0 +1,22 @@
+@startuml Check History Sequence Diagram
+
+autonumber
+
+actor User as U
+participant HistoryController as HC
+participant FeedbackService as FS
+database Database as DB
+
+U -> HC: Request to check history
+activate HC
+HC -> FS: getHistory(user)
+activate FS
+FS -> DB: getHistory(user)
+activate DB
+DB --> FS: history
+deactivate DB
+FS --> HC: history
+deactivate FS
+HC --> U: historyPage
+
+@enduml

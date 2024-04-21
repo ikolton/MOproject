@@ -5,7 +5,7 @@ autonumber
 actor User as U
 participant "LoginController" as LC
 participant UserService as US
-participant Database as DB
+database Database as DB
 
 U -> LC: HTTP get /login Request
 activate LC

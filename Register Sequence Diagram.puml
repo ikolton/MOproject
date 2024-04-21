@@ -5,7 +5,7 @@ autonumber
 actor User as U
 participant "RegisterController" as RC
 participant UserService as US
-participant Database as DB
+database Database as DB
 
 U -> RC: HTTP get /register Request
 activate RC
