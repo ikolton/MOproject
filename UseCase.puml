@@ -48,7 +48,7 @@ AI --> VAD : Sends Analysis Details
 'Admin inherits after user
 A -left-> U : inhertis
 
-A --> ANBI
+A -- ANBI
 
 DB -up-> LPA : Loads Analyses
 DB <-left- SA : Saves Analysis
