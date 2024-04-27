@@ -28,6 +28,7 @@ alt#gold User doesn't exists/Password incorrect
 else Correct Credentials
 
     LC --> U: Redirect to /home
+    deactivate LC
 end
 
 @enduml

@@ -18,5 +18,6 @@ deactivate DB
 FS --> HC: history
 deactivate FS
 HC --> U: historyPage
+deactivate HC
 
 @enduml

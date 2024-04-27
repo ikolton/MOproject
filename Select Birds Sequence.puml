@@ -34,6 +34,7 @@ loop X times
     DB --> FS: saved
     deactivate DB
     FS --> IC: saved
+    deactivate FS
 end
 
     IC --> U: Picture Selection Page
