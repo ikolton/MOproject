@@ -1,0 +1,46 @@
+@startuml
+
+package "Web Interface" {
+    [Welcome Page]
+    [Login]
+    [Registration]
+    [Home Page]
+    [Bird Selection]
+    [Analysis Details]
+}
+
+package "Backend" {
+    [Application Server]
+    [User Database]
+    [Feedback Database]
+    ()"User Repository"
+    ()"Feedback Repository"
+}
+
+package "AI Model Module" {
+    [Bird Classification Model]
+}
+
+[Welcome Page] -down-> [Login] : transitions to
+[Welcome Page] -down-> [Registration] : transitions to
+[Login] -down-> [Home Page] : after login
+[Registration] -down-> [Login] : transitions to
+[Home Page] -down-> [Bird Selection] : selects option
+[Bird Selection] -down-> [Analysis Details] : after analysis
+
+[Application Server] -right-> [Bird Classification Model] : sends requests
+[Application Server] .down.> "User Repository" : use
+[Application Server] .down.> "Feedback Repository" : use
+[User Repository] <-down- [User Database] : implements
+[Feedback Repository] <-down- [Feedback Database] : implements
+
+[Bird Classification Model] -left-> [Application Server] : sends results
+
+[Welcome Page] .right.> [Application Server] : connects
+[Login] .right.> [Application Server] : connects
+[Registration] .right.> [Application Server] : connects
+[Home Page] .right.> [Application Server] : connects
+[Bird Selection] .right.> [Application Server] : connects
+[Analysis Details] .right.> [Application Server] : connects
+
+@enduml
