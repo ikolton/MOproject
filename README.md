@@ -1,13 +1,8 @@
-# Używamy tego:
+# Projekt bazowy
+[**ml-prototypes-feedback-collection**](https://github.com/millamy/ml-prototypes-feedback-collector/tree/history_setup)
 
-https://plantuml.com/
+## Używamy tego do robienia diagramów:
 
-*Polecam plugin do **InteliJ***
+- [https://plantuml.com/](https://www.plantuml.com/plantuml/uml/)
+- [drawi.io](https://app.diagrams.net/)
 
-On daje ci od razu preview wszystkiego, podświetla co i jak
-
-[**Tutaj**](https://www.youtube.com/watch?v=xXYQGl2XFdE&list=PLrzWQu7Ajpi1w4XAi6leIdvYGEdtHt9j3&index=1) masz guide. 
-
----
-
-**Serdecznie pozdrawiam i życzę miłego dnia**
