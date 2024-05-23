@@ -29,15 +29,15 @@ rectangle App {
     U -- VAH
 
 
-    L ..> FF : <<includes>>
-    R ..> FF : <<includes>>
+    L ..> FF : <<include>>
+    R ..> FF : <<include>>
 
 
-    SBI ..> ST : <<includes>>
+    SBI ..> ST : <<include>>
 
-    VAH ..> LPA : <<includes>>
+    VAH ..> LPA : <<include>>
 
-    VAD ..> SA : <<includes>>
+    VAD ..> SA : <<include>>
 
 
 }
